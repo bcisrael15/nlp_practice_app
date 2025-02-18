@@ -26,4 +26,21 @@ def download_movie_reviews(data_dir: str = 'data/raw') -> pd.DataFrame:
     return pd.DataFrame({
         'text': decoded_texts,
         'label': labels
-    }) 
+    })
+
+def download_movie_reviews_with_metadata(data_dir: str = 'data/raw') -> pd.DataFrame:
+    """Download and load IMDB Movie Reviews dataset with basic metadata"""
+    print("Loading IMDB Movie Reviews dataset with metadata...")
+    
+    # Load base dataset
+    df = download_movie_reviews()
+    
+    # Add basic metadata
+    df['length'] = df['text'].str.len()
+    df['word_count'] = df['text'].str.split().str.len()
+    df['avg_word_length'] = df['text'].apply(lambda x: sum(len(word) for word in x.split()) / len(x.split()))
+    
+    # Categorize reviews by length
+    df['length_category'] = pd.qcut(df['length'], q=5, labels=['Very Short', 'Short', 'Medium', 'Long', 'Very Long'])
+    
+    return df 
