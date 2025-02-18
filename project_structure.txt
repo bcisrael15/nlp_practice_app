@@ -1,0 +1,26 @@
+project_root/
+├── src/
+│   ├── features/
+│   │   ├── vectorizer.py
+│   │   └── feature_engineering.py
+│   ├── preprocessing/
+│   │   ├── __init__.py
+│   │   ├── cleaner.py
+│   │   └── data_validation.py
+│   ├── models/
+│   │   ├── classifier.py
+│   │   ├── model_evaluation.py
+│   │   └── model_config.py
+│   └── utils/
+│       ├── __init__.py
+│       └── logger.py
+├── tests/
+│   └── __init__.py
+├── data/
+│   ├── raw/
+│   ├── processed/
+│   └── models/
+├── notebooks/
+├── requirements.txt
+├── .gitignore
+└── README.md 
